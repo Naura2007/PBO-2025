@@ -1,0 +1,41 @@
+
+/**
+ * Write a description of class Mahasiswa here.
+ *
+ * @Naura Rossa Azalia
+ * @23-09-2025
+ */
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Mahasiswa
+{
+    private String nama;
+    private String NRP;
+    private List<Matkul> krs = new ArrayList<>();
+
+    /**
+     * Constructor for objects of class Mahasiswa
+     */
+    public Mahasiswa(String nama, String NRP)
+    {
+        this.nama = nama;
+        this.NRP = NRP;
+    }
+    
+    public void ambilMatkul(Matkul m)
+    {
+        krs.add(m);
+    }
+    
+    public void tampilkanKRS()
+    {
+        System.out.println("KRS Mahasiswa " + nama + " (" + NRP + "):");
+        for (Matkul m : krs){
+            System.out.println("- " + m.getNama() + " | Dosen: " + 
+            m.getDosen().getNama());
+        }
+    }
+    
+}
