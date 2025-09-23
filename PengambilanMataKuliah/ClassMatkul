@@ -1,0 +1,35 @@
+
+/**
+ * Write a description of class Matakuliah here.
+ *
+ * @Naura Rossa Azalia
+ * @23-09-2025
+ */
+public class Matkul
+{
+    // instance variables - replace the example below with your own
+    private String kode;
+    private String nama;
+    private Dosen dosen;
+    
+    /**
+     * Constructor for objects of class Matakuliah
+     */
+    public Matkul(String kode, String nama, Dosen dosen)
+    {
+        this.kode = kode;
+        this.nama = nama;
+        this.dosen = dosen;
+        dosen.tambahMatkul(this);
+    }
+    
+    public String getNama()
+    {
+        return nama;
+    }
+    
+    public Dosen getDosen()
+    {
+        return dosen;
+    }
+}
