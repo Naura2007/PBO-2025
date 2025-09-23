@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+/**
+ * Program utama untuk simulasi pengambilan mata kuliah dengan input user.
+ *
+ * @author Naura
+ * @version 2025-09-23
+ */
+public class MainProgram {
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // ======================
+        // Dosen
+        // ======================
+        Dosen d1 = new Dosen("Pak Fajar Baskoro", "1122233");
+        Dosen d2 = new Dosen("Bu Bilqis Amaliah", "445566");
+
+        // ======================
+        // Mata Kuliah
+        // ======================
+        Matkul m1 = new Matkul("IF01", "PBO", d1);
+        Matkul m2 = new Matkul("IF02", "Aljabar Linier", d2);
+        Matkul m3 = new Matkul("IF03", "Komputasi Numerik", d2);
+        Matkul m4 = new Matkul("IF04", "PWEB", d1);
+
+        Matkul[] semuaMatkul = { m1, m2, m3, m4 };
+
+        // ======================
+        // Input Mahasiswa
+        // ======================
+        System.out.print("Masukkan nama mahasiswa: ");
+        String nama = sc.nextLine();
+        System.out.print("Masukkan NIM mahasiswa: ");
+        String nim = sc.nextLine();
+
+        Mahasiswa mhs = new Mahasiswa(nama, nim);
+
+        // ======================
+        // Pilih Mata Kuliah
+        // ======================
+        System.out.println("\nDaftar Mata Kuliah yang tersedia:");
+        for (int i = 0; i < semuaMatkul.length; i++) {
+            System.out.println((i + 1) + ". " + semuaMatkul[i].getNama()
+                    + " | Dosen: " + semuaMatkul[i].getDosen().getNama());
+        }
+
+        System.out.print("\nBerapa mata kuliah yang ingin diambil? ");
+        int jumlah = sc.nextInt();
+
+        for (int i = 0; i < jumlah; i++) {
+            System.out.print("Pilih nomor matkul ke-" + (i + 1) + ": ");
+            int pilihan = sc.nextInt();
+            if (pilihan >= 1 && pilihan <= semuaMatkul.length) {
+                mhs.ambilMatkul(semuaMatkul[pilihan - 1]);
+            } else {
+                System.out.println("Pilihan tidak valid, dilewati.");
+            }
+        }
+
+        // ======================
+        // Output
+        // ======================
+        System.out.println("\n==============================");
+        mhs.tampilkanKRS();
+        System.out.println("==============================");
+
+        sc.close();
+    }
+}
