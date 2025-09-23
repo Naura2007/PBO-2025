@@ -1,0 +1,43 @@
+
+/**
+ * Write a description of class Dosen here.
+ *
+ * @author Naura Rossa Azalia
+ * @23-09-2025
+ */
+
+import java.util.ArrayList;
+import java.util.List;
+public class Dosen
+{
+    private String nama;
+    private String NRP;
+    private List<Matkul> daftarMatkul = new ArrayList<>();
+
+    /**
+     * Constructor for objects of class Dosen
+     */
+    public Dosen(String nama, String NRP)
+    {
+        this.nama = nama;
+        this.NRP = NRP;
+    }
+    
+    public void tambahMatkul(Matkul m)
+    {
+        daftarMatkul.add(m);
+    }
+    
+    public String getNama()
+    {
+        return nama;
+    }
+    
+    public void tampilkanMatkul()
+    {
+        System.out.println("Mata kuliah yang diajar oleh " + nama + ":");
+        for (Matkul m : daftarMatkul){
+            System.out.println("- " + m.getNama());
+        }
+    }
+}
